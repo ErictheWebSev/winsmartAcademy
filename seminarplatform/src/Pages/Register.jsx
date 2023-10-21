@@ -5,7 +5,7 @@ const RegistrationPage = () => {
   const [message, setMessage] = useState('')
   
   const handleSubmit = (formData) => {
-    fetch('http://localhost:8000/api/register/', {
+    fetch('https://winsmart-academy.onrender.com/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
