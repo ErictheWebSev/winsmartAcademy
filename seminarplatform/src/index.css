@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply w-full h-12 bg-transparent border rounded-lg border-blue-500 outline-none focus:border-purpleP text-sm text-gray-300 px-5;
+/*     border-image: linear-gradient(45deg, #bb23e3, rgba(0,0,244, 0.8));
+    border-image-width: 2px;
+    border-image-slice: 1; */
+  }
+  
+  .label {
+    @apply text-sm text-gray-400;
+  }
+  
+  .btn {
+    @apply w-32 h-14 px-2 py-4 text-sm text-center bg-[rgba(213,213,213,0.2)] rounded-lg text-white outline-none;
+  }
+  
+  .active {
+    @apply bg-blue-600;
+  }
+}

@@ -1,0 +1,1 @@
+# Seminar Registration Platform
