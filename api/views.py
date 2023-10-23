@@ -28,6 +28,19 @@ def registerUser(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
+      
+      subject = 'Seminar Registration Confirmation'
+      message = f'Thank you for registering! Your confirmation code is: {confirmation_code}'
+      from_email = 'alfrederic371@gmail.com'
+      recipient_list = [serializer.validated_data['email']]
+      
+      try:
+        send_mail(subject, message, from_email, recipient_list)
+        if send_mail:
+          print('sent' + message)
+          Response({'success': 'Email sent'})
+      except Exception as e:
+        return Response({'error': 'Email sending failed'})
       return Response(serializer.data)
     return Response(serializer.errors)
 

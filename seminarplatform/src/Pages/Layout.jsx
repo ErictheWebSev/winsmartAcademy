@@ -4,7 +4,7 @@ import Logo from '../static/logo.png'
 const Layout = () => {
   return (
     <>
-      <div className="w-full min-h-screen bg-neutral-900">
+      <div className="w-full min-h-screen bg-white">
         <header className="bg-transparent backdrop-blur-2xl top-0 sticky mb-9 z-10 h-20 w-full">
           <div className="max-w-4xl mx-auto flex justify-between items-center p-4 h-20">
             <div className="overflow-hidden ">

@@ -20,9 +20,34 @@ const RegistrationForm = ({ submit }) => {
     setFormData({...formData, experience: value})
   }
   
+  const validateForm = () => {
+    const newErrors = {}
+    
+    formData.first_name.trim() === '' ? newErrors.first_name = 'First Name is required' : ''
+    
+    formData.last_name.trim() === '' ? newErrors.last_name = 'Last Name is required' : ''
+    
+    formData.email.trim() === '' ? newErrors.email = 'Email is required' : ''
+    
+    
+    formData.phone_number.trim() === '' || formData.phone_number.trim().length < 11 ? newErrors.phone_number = 'Phone Number is invalid' : ''
+    
+    formData.experience.trim() === '' ? newErrors.experience = 'The experience field is required' : ''
+    
+    formData.email.trim().includes('@gmail.com') ? '' : newErrors.email = 'Email is invalid'
+    
+    
+    
+    setError(newErrors)
+    return Object.keys(newErrors).length === 0;
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-    submit(formData)
+    const isValid = validateForm();
+    if (isValid) {
+      submit(formData)
+    }
   }
   
   return (
@@ -66,8 +91,14 @@ const RegistrationForm = ({ submit }) => {
             </div>
           </div> 
           
+          { Object.keys(error).map((fieldName) => (
+            <div key={fieldName} className="error-message">
+              {error[fieldName]}
+            </div>
+           )) }
+          
           <div>
-            <button type="submit" className="w-full text-lg bg-gradient-to-r from-purpleP to-blue-600 h-14 px-3 py-4 text-center text-white rounded-lg mb-3">Register</button>
+            <button type="submit" className="w-full text-lg bg-gradient-to-r from-purpleP to-blue-600 h-14 px-3 py-4 text-center text-white rounded-lg mb-3 outline-none">Register</button>
           </div>
         </form>
   )
